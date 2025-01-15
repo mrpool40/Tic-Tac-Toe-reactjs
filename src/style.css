@@ -1,0 +1,152 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: white;
+  color: #333;
+}
+
+.container {
+  text-align: center;
+  padding: 2rem;
+  background-color: #ebe8e7;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+}
+
+h1 {
+  font-size: 3.5rem;
+  margin-bottom: 30px;
+  color: #3b3232;
+  letter-spacing: 2px;
+}
+
+.status {
+  margin-bottom: 30px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #413b3b;
+  padding: 10px 20px;
+  display: inline-block;
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 30px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+}
+
+.cell {
+  background: white;
+  border: 2px solid #333;
+  border-radius: 10px;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-height: 120px;
+}
+
+.cell:hover {
+  background: #f5f5f5;
+}
+
+.cell:not(:empty) {
+  cursor: not-allowed;
+}
+
+.reset-button {
+  padding: 15px 40px;
+  font-size: 1.4rem;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.reset-button:hover {
+  background: #555;
+}
+
+/* X and O styling */
+.cell[data-value="X"] {
+  color: #2196F3;
+}
+
+.cell[data-value="O"] {
+  color: #F44336;
+}
+
+/* Animation for new moves */
+@keyframes popIn {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.cell:not(:empty) {
+  animation: popIn 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .container {
+    padding: 1rem;
+    margin: 1rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .status {
+    font-size: 1.4rem;
+  }
+
+  .game-board {
+    max-width: 350px;
+    gap: 10px;
+  }
+
+  .cell {
+    font-size: 3rem;
+    min-height: 90px;
+  }
+
+  .reset-button {
+    padding: 12px 30px;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .game-board {
+    max-width: 280px;
+  }
+
+  .cell {
+    font-size: 2.5rem;
+    min-height: 70px;
+  }
+}
